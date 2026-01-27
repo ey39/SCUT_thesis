@@ -1,9 +1,12 @@
-\documentclass[unicode,master]{scutthesis} % 草稿封面，硕士则添加选项master，博士则去掉。使用正式封面时注释该行
-% \documentclass[unicode,master,pdfcover]{scutthesis} %   % 论文正式封面，pdfcover为可选项，终稿再添加，使用草稿封面时注释该行
+% 注：1. pdfcover的内容根据学校要求自定义（参考cover_file文件夹）。2. 这里代码写得不是很完备，第二个参数只影响封面，其他内容如页眉不受影响。还需在下面代码进一步调整。这里还需完善。为简单期间，下面三个选项供选择：
+\documentclass[unicode,master]{scutthesis} % 硕士草稿封面，使用正式封面时注释该行
+% \documentclass[unicode]{scutthesis} %  博士草稿封面，使用正式封面时注释该行
+% \documentclass[unicode,pdfcover]{scutthesis} %   论文正式封面（不使用选项来区分硕博士，而是大家制作自己的封面文件thesis_cover.pdf，盲审时删除必要的封面内容即可），使用草稿封面时注释该行
+
 \usepackage{array,longtable,graphicx} 
 \usepackage{anyfontsize} %消除字体警告
 \usepackage{enumitem}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%——by MCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %编译范围
 % \includeonly{chapter/chapter04}
 %参考文献设置
@@ -24,15 +27,15 @@
 \fancyhead[LE]{}
 \fancyhead[LO]{}
 \fancyhead[CO]{\headfont{\leftmark}}
-\fancyhead[CE]{\headfont{华南理工大学硕士学位论文}}% 
+\fancyhead[CE]{\headfont{华南理工大学硕士学位论文}}% 博士自行修改
 \renewcommand{\headrulewidth}{1.5pt}
 \renewcommand{\footrulewidth}{0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[unicode=true,bookmarks=true,bookmarksnumbered=true,bookmarksopen=false,breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true]{hyperref}
+%  \hypersetup{...}主要影响生成的 PDF 文件的元数据（PDF属性）和超链接样式，不会影响论文正文内容的显示。
 \hypersetup{pdftitle={LaTeX模板使用说明},
-	pdfauthor={姓名},
-	pdfsubject={华南理工大学硕士学位论文},
-%%	pdfsubject={华南理工大学博士学位论文},
+	pdfauthor={姓名}, % 可能会泄露作者信息，盲审时请注意
+	pdfsubject={华南理工大学硕士学位论文}, % 博士自行修改
 	pdfkeywords={PDF关键字1;PDF关键字2},
 %%		linkcolor=black, anchorcolor=black, citecolor=black, filecolor=black, menucolor=black, urlcolor=black, pdfstartview=FitH}% 黑白，提交版
 	linkcolor=blue, anchorcolor=black, citecolor=red, filecolor=magenta, menucolor=red, urlcolor=magenta, pdfstartview=FitH}% 彩色
@@ -79,7 +82,7 @@
 	
 	\mainmatter %此后为阿拉伯数字页码
 	
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%页眉页脚设置 ——by MCH 
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%页眉页脚设置  
     \fancypagestyle{plain}{
     	\pagestyle{fancy}
     }	% 每章的第一页会默认使用plain，没有页眉。通过重定义plain为fancy解决
@@ -93,7 +96,7 @@
 	% 自行根据需要添加章节。注意要包含正确路径
 
 	\backmatter %章节不编号但页码继续
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    微调，使得后续章节的页眉不带章号——by MCH
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    微调，使得后续章节的页眉不带章号
 	\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\include{chapter/conclusion} %结论
@@ -101,7 +104,7 @@
 %%	\bibliographystyle{scutthesis}
 %%	\bibliography{F:/MyLibrary}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% biber参考文献设置	——by MCH
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% biber参考文献设置	
 	%\renewcommand*{\bibfont}{\refbodyfont}			% 设置文献著录字号比正文小一号（五号），需要小四号请注释该行. % 不推荐使用small，而是使用cls文件中精确定义了的字号。
 	\phantomsection % “目录”中的链接能正确跳转，需要添加 \phantomsection 否则点击参考文献会跳转到结论
 	\addcontentsline{toc}{chapter}{参考文献}	%目录中添加参考文献

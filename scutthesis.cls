@@ -68,12 +68,12 @@
 
 %% 字体设置
 %\RequirePackage[BoldFont, SlantFont,CJKnumber]{xeCJK} % xeCJK package, CJKnumber deprecated.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-by MCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage[BoldFont, SlantFont]{xeCJK} %CJKnumber已弃用
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\@ifpackagelater {xeCJK}  { 2008/12/29 }
 \RequirePackage{CJKnumb} % used in recent TEX distribution
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-by MCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{xCJKnumb} %中文编号如第一章的“一”，利用xCJKnumb设置
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\punctstyle{kaiming}
@@ -88,7 +88,7 @@
 \XeTeXlinebreakskip = 0pt plus 1pt %字元间可加入0pt~1pt 的弹性间距，这样才能排出左右对齐的段落。
 
 \setCJKmainfont{SimSun}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-by MCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setCJKsansfont{SimSun}	%设置默认字体，防止报警
 \setCJKmonofont{SimSun} %设置默认字体，防止报警
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,7 +128,7 @@
 \newcommand{\xiaosanhao}{\fontsize{15pt}{22.5pt}\selectfont}%1.5
 \newcommand{\sihao}{\fontsize{14pt}{16pt}\selectfont}
 \newcommand{\xiaosihao}{\fontsize{12pt}{14pt}\selectfont}
-\newcommand{\wuhao}{\fontsize{10.5pt}{13pt}\selectfont} % change 10.95pt to 10.5pt --by mch, 真正的五号字应该是10.5。10.95是通常所说的11pt，在英文排版中使用。
+\newcommand{\wuhao}{\fontsize{10.5pt}{13pt}\selectfont} % change 10.95pt to 10.5pt, 真正的五号字应该是10.5。10.95是通常所说的11pt，在英文排版中使用。
 \newcommand{\xiaowuhao}{\fontsize{9pt}{11pt}\selectfont}
 \newcommand{\liuhao}{\fontsize{7.5pt}{9pt}\selectfont}
 \newcommand{\xiaoliuhao}{\fontsize{6.5pt}{7.5pt}\selectfont}
@@ -201,7 +201,7 @@
 \RequirePackage{subfig} % config兼容subfigure命令
 \RequirePackage{float} % 可以使用［H］命令
 \RequirePackage{caption} % 定义图的标题格式：居中. 使用caption3.0
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 根据子图引用显示，重定义部分参数 ——by mch
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 根据子图引用显示，重定义部分参数  
 \DeclareSubrefFormat{parens}{#1 #2)}
 \DeclareSubrefFormat{subparens}{#2)}
 \DeclareCaptionListOfFormat{parens}{#1 #2)}
@@ -217,7 +217,7 @@
   justification=centering,labelformat=brace,labelsep=space,subrefformat=subparens,listofformat=parens}%要使分图题和图题一样字号，选项加上 font={capFont}
 
 %%%%%%%%%%定义双标题命令
-% 注释掉双语标题 ——by mch
+% 注释掉双语标题  
 %\newcommand{\FigureBicaption}[2]{
 %  \renewcommand{\figurename}{图}
 %  \vspace{8pt}
@@ -260,7 +260,6 @@
   \renewcommand{\tablename}{表}
 }
 % 算法环境，按需使用。
-% --by MCH
 \usepackage{algorithm}
 \usepackage{algorithmicx}
 \usepackage{algpseudocode}
@@ -366,7 +365,7 @@
 }
 \renewcommand{\lstlistingname}{代码} %% 重命名Listings标题头 added by Guan
 
-%%%%%%%%%%%%%%%%%%--by MCH--%%%%%%%%%%%%%%%%%%%%%%%%%%%%2022-2-26更新
+%%%%%%%%%%%%%%%%%%%%--2022-2-26更新--%%%%%%%%%%%%%%%%%%%%%%%%%%
 %---ref: https://blog.csdn.net/youyagaozitai/article/details/70210297?%3E
 % 增加目录的项目——tocbibind
 %正文区写 \tableofcontents %输出目录命令，输出内容是正文中/section等的内容。 
@@ -380,7 +379,7 @@
 %%%%%%%%%%%%%%%%%
 \RequirePackage{titletoc}
 %\renewcommand\contentsname{\centerline{\toctitlefont{目\quad{}录}}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-by MCH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\contentsname}{目\texorpdfstring{\quad}{}录}	%中文目录
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \titlecontents{chapter}[0ex]{\tocchapterfont}{%
@@ -426,42 +425,40 @@
 \AtBeginDocument{\CJKindent{}%
     \makeindex%
     \normalsize%正文字体格式
-    \linespacing{1.682}% 主行距～1.5倍  % 手调参数，利用1比1的打印效果看行距是否和word的1.5倍行距一样。latex行距控制水太深了。见109行ToDo。--by mch
+    \linespacing{1.682}% 主行距～1.5倍  % 手调参数，利用1比1的打印效果看行距是否和word的1.5倍行距一样。latex行距控制水太深了。见109行ToDo。 
   }
 \AtEndDocument{}
 
 %------------------
 \renewcommand{\maketitle}{% called outside
   \ifpdfcover
-%%coverpage from pdf file
-       %% \includepdf[pages=-]{thesis_cover.pdf}%pdf文件路径为主文件tex或lyx的当前目录
-          \includepdf[pages={1-5,{},7-8}]{cover_file/thesis_cover.pdf}
-   \else
-%%buildin coverpage
-\begin{titlepage}
-\raggedleft
-\null
-\vskip 4em
+    %%coverpage from pdf file
+    \includepdf[pages={1-5,{},7-8}]{cover_file/thesis_cover.pdf}
+  \else
+    %%buildin coverpage
+    \begin{titlepage}
+    \raggedleft
+    \null
+    \vskip 4em
 
-\bigskip
-\centerline{\songti\erhao  {\thesissubject} }
-\vskip 4em
+    \bigskip
+    \centerline{\songti\erhao  {\thesissubject} }
+    \vskip 4em
 
-\bigskip
-\centerline{\heiti\yihao  {\@title} }
-\vskip 2em
+    \bigskip
+    \centerline{\heiti\yihao  {\@title} }
+    \vskip 2em
 
-\bigskip
-\centerline{\songti\erhao   {\@author} }
-\bigskip
-\centerline{\songti\erhao   {\@supervisor} }
+    \bigskip
+    \centerline{\songti\erhao   {\@author} }
+    \bigskip
+    \centerline{\songti\erhao   {\@supervisor} }
 
-\vfill
-\centerline{\songti\normalsize{\@institute}}
-\centerline{\songti\normalsize{\@date}}
-\end{titlepage}
-
-\fi
+    \vfill
+    \centerline{\songti\normalsize{\@institute}}
+    \centerline{\songti\normalsize{\@date}}
+    \end{titlepage}
+  \fi
 }
 %%摘要分中英文页，而且有两者排版方式：
 %一种是采用\abstractCN和\abstractEN方式以“摘要”和“Abstract”为页标题
@@ -624,8 +621,8 @@
 \newtheorem{definition}{定义~}[chapter]
 \newtheorem{example}{例~}[chapter]
 \newtheorem{remark}{注~}[chapter]
-\newtheorem{assumption}{假设~}[chapter]	% by mch
-% ------改为definition，by mch
+\newtheorem{assumption}{假设~}[chapter]	%  
+% ------改为definition 
 \newtheorem{proposition}{命题~}[chapter]
 \newtheorem{lemma}{引理~}[chapter]
 \newtheorem{theorem}{定理~}[chapter]
@@ -648,7 +645,7 @@
   {0.5em}% Space after thm head: \newline = linebreak
   {}%         Thm head spec
 \theoremstyle{plain}
-% -------------------根据2022年博士论文送审反馈意见，下面部分改为正体，故移到definition--------by mch
+% -------------------根据2022年博士论文送审反馈意见，下面部分改为正体，故移到definition 
 % \newtheorem{proposition}{命题~}[chapter]
 % \newtheorem{lemma}{引理~}[chapter]
 % \newtheorem{theorem}{定理~}[chapter]
